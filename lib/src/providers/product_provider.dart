@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopon/src/models/product.dart';
+import 'package:shopon/src/providers/product.dart';
 
 class ProductProvider with ChangeNotifier {
   List<Product> _items = [
@@ -37,12 +37,34 @@ class ProductProvider with ChangeNotifier {
     ),
   ];
 
+  // var _showFavOnly = false;
+
   List<Product> get items {
+    // if (_showFavOnly) {
+    //   return _items.where((element) => element.isFavourite).toList();
+    // }
     return [..._items];
   }
 
+  Product findById(String id) {
+    return _items.firstWhere((element) => element.id == id);
+  }
+
+  List<Product> get favItems {
+    return _items.where((element) => element.isFavourite).toList();
+  }
+
+  // void showFavOnly() {
+  //   _showFavOnly = true;
+  //   notifyListeners();
+  // }
+
+  // void showAll() {
+  //   _showFavOnly = false;
+  //   notifyListeners();
+  // }
+
   void addProduct() {
-    
     notifyListeners();
   }
 }
