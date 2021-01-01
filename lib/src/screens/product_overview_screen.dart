@@ -5,6 +5,7 @@ import 'package:shopon/src/providers/cart.dart';
 import 'package:shopon/src/screens/cart_screen.dart';
 
 import 'package:shopon/src/widgets/badge.dart';
+import 'package:shopon/src/widgets/main_drawer.dart';
 import 'package:shopon/src/widgets/products_grid.dart';
 
 enum FilterOptions {
@@ -70,6 +71,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
         centerTitle: true,
       ),
       body: ProductGrid(_showOnlyFav),
+      drawer: MainDrawer(),
     );
   }
 }

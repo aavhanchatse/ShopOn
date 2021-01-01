@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:shopon/src/providers/cart.dart';
+import 'package:shopon/src/providers/orders.dart';
 import 'package:shopon/src/providers/product_provider.dart';
 
 import 'package:shopon/src/screens/cart_screen.dart';
+import 'package:shopon/src/screens/order_screen.dart';
 import 'package:shopon/src/screens/product_details_screen.dart';
 import 'package:shopon/src/screens/product_overview_screen.dart';
 
@@ -19,7 +21,10 @@ class App extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => Cart(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Orders(),
+        ),
       ],
       child: MaterialApp(
         title: 'ShopOn',
@@ -27,10 +32,12 @@ class App extends StatelessWidget {
             primarySwatch: Colors.purple,
             accentColor: Colors.deepOrange,
             fontFamily: 'Lato'),
-        home: ProductOverviewScreen(),
+        initialRoute: '/',
         routes: {
+          '/': (context) => ProductOverviewScreen(),
           ProductDetailsScreen.routeName: (context) => ProductDetailsScreen(),
           CartScreen.routeName: (context) => CartScreen(),
+          OrderScreen.routeName: (context) => OrderScreen(),
         },
       ),
     );

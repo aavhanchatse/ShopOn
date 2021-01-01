@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:shopon/src/providers/cart.dart' show Cart;
+import 'package:shopon/src/providers/orders.dart';
 import 'package:shopon/src/widgets/cart_item.dart';
 
 class CartScreen extends StatelessWidget {
@@ -9,6 +10,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
@@ -30,7 +32,7 @@ class CartScreen extends StatelessWidget {
                   Consumer<Cart>(
                     builder: (context, value, child) => Chip(
                       label: Text(
-                        '\$ ${value.totalAmount}',
+                        '\$ ${value.totalAmount.toStringAsFixed(2)}',
                         style: TextStyle(
                             color: Theme.of(context)
                                 .primaryTextTheme
@@ -41,7 +43,13 @@ class CartScreen extends StatelessWidget {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Provider.of<Orders>(context, listen: false).addOrder(
+                        cart.items.values.toList(),
+                        cart.totalAmount,
+                      );
+                      cart.clearCart();
+                    },
                     child: Text(
                       'Place Order',
                       style: TextStyle(color: Theme.of(context).primaryColor),
@@ -60,6 +68,7 @@ class CartScreen extends StatelessWidget {
                   title: cart.items.values.toList()[i].title,
                   quantity: cart.items.values.toList()[i].quantity,
                   price: cart.items.values.toList()[i].price,
+                  productId: cart.items.keys.toList()[i],
                 ),
               ),
             ),
