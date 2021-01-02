@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopon/src/screens/order_screen.dart';
+import 'package:shopon/src/screens/user_products_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, Function onTapHandler) {
@@ -43,12 +44,12 @@ class MainDrawer extends StatelessWidget {
           buildListTile('Home', () {
             Navigator.of(context).pushReplacementNamed('/');
           }),
-          buildListTile(
-            'Orders',
-            () {
-              Navigator.of(context).pushReplacementNamed(OrderScreen.routeName);
-            },
-          ),
+          buildListTile('Orders', () {
+            Navigator.of(context).pushReplacementNamed(OrderScreen.routeName);
+          }),
+          buildListTile('User Products', () {
+            Navigator.of(context).pushReplacementNamed(UserProductsScreen.routeName);
+          }),
         ],
       ),
     );

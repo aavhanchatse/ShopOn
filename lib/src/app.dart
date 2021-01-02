@@ -6,9 +6,11 @@ import 'package:shopon/src/providers/orders.dart';
 import 'package:shopon/src/providers/product_provider.dart';
 
 import 'package:shopon/src/screens/cart_screen.dart';
+import 'package:shopon/src/screens/edit_product_screen.dart';
 import 'package:shopon/src/screens/order_screen.dart';
 import 'package:shopon/src/screens/product_details_screen.dart';
 import 'package:shopon/src/screens/product_overview_screen.dart';
+import 'package:shopon/src/screens/user_products_screen.dart';
 
 class App extends StatelessWidget {
   @override
@@ -38,6 +40,8 @@ class App extends StatelessWidget {
           ProductDetailsScreen.routeName: (context) => ProductDetailsScreen(),
           CartScreen.routeName: (context) => CartScreen(),
           OrderScreen.routeName: (context) => OrderScreen(),
+          UserProductsScreen.routeName: (context) => UserProductsScreen(),
+          EditProductScreen.routeName: (context) => EditProductScreen(),
         },
       ),
     );
