@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:shopon/src/providers/orders.dart' show Orders;
+
 import 'package:shopon/src/widgets/main_drawer.dart';
 import 'package:shopon/src/widgets/order_item.dart';
 
@@ -13,7 +15,6 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   var _isLoading = false;
-  var _init = true;
 
   @override
   void initState() {
