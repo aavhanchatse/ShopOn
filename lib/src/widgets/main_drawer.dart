@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopon/src/helpers/custom_route.dart';
 import 'package:shopon/src/providers/auth.dart';
 import 'package:shopon/src/screens/order_screen.dart';
 import 'package:shopon/src/screens/user_products_screen.dart';
@@ -48,6 +49,9 @@ class MainDrawer extends StatelessWidget {
           }),
           buildListTile('Orders', () {
             Navigator.of(context).pushReplacementNamed(OrderScreen.routeName);
+            // Navigator.of(context).pushReplacement(CustomRoute(
+            //   builder: (context) => OrderScreen(),
+            // ));
           }),
           buildListTile('User Products', () {
             Navigator.of(context)
@@ -56,7 +60,7 @@ class MainDrawer extends StatelessWidget {
           buildListTile('LogOut', () {
             Navigator.of(context).pop();
             Navigator.of(context).pushReplacementNamed('/');
-            
+
             Provider.of<Auth>(context, listen: false).logOut();
           }),
         ],
